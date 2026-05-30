@@ -33,24 +33,6 @@ public partial class HardwarePage : ContentPage
                 return;
             }
 
-            var cameraStatus = await Permissions.CheckStatusAsync<Permissions.Camera>();
-            if (cameraStatus != PermissionStatus.Granted)
-            {
-                cameraStatus = await Permissions.RequestAsync<Permissions.Camera>();
-                if (cameraStatus != PermissionStatus.Granted)
-                {
-                    if (!Permissions.ShouldShowRationale<Permissions.Camera>())
-                    {
-                        await DisplayAlert(
-                            "Camera permission required",
-                            "Camera permission was permanently denied. Please enable it in: System Settings > Apps > NutriBite > Permissions > Camera.",
-                            "OK");
-                    }
-                    SetStatus("Camera permission was denied.");
-                    return;
-                }
-            }
-
             var photo = await MediaPicker.Default.CapturePhotoAsync();
             if (photo is null)
             {
@@ -68,7 +50,18 @@ public partial class HardwarePage : ContentPage
         }
         catch (PermissionException)
         {
-            SetStatus("Camera permission was denied. Enable camera access in device settings.");
+            var openSettings = await DisplayAlert(
+                "Camera permission required",
+                "Camera access has not been granted. Would you like to open system settings to enable it?",
+                "Open Settings",
+                "Cancel");
+
+            if (openSettings)
+            {
+                AppInfo.ShowSettingsUI();
+            }
+
+            SetStatus("Camera permission denied. Enable it in system settings.");
         }
         catch (Exception ex)
         {
