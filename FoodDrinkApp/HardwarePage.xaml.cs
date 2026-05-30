@@ -40,11 +40,7 @@ public partial class HardwarePage : ContentPage
                 return;
             }
 
-            await using var stream = await photo.OpenReadAsync();
-            using var memoryStream = new MemoryStream();
-            await stream.CopyToAsync(memoryStream);
-            var imageBytes = memoryStream.ToArray();
-            FoodPhoto.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+            await LoadPhotoAsync(photo);
             SetStatus("Food photo captured successfully.");
             HapticFeedback.Default.Perform(HapticFeedbackType.Click);
         }
@@ -65,8 +61,57 @@ public partial class HardwarePage : ContentPage
         }
         catch (Exception ex)
         {
-            SetStatus($"Camera error: {ex.Message}");
+            await DisplayAlert(
+                "Camera unavailable",
+                $"The camera could not be opened on this device ({ex.Message}). You can use the Gallery button to pick an existing photo instead.",
+                "OK");
+            SetStatus("Camera error. Try using the Gallery button instead.");
         }
+    }
+
+    private async void OnPickPhotoClicked(object? sender, EventArgs e)
+    {
+        try
+        {
+            var photo = await MediaPicker.Default.PickPhotoAsync();
+            if (photo is null)
+            {
+                SetStatus("Photo selection cancelled.");
+                return;
+            }
+
+            await LoadPhotoAsync(photo);
+            SetStatus("Food photo loaded from gallery successfully.");
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        }
+        catch (PermissionException)
+        {
+            var openSettings = await DisplayAlert(
+                "Storage permission required",
+                "Storage access has not been granted. Would you like to open system settings to enable it?",
+                "Open Settings",
+                "Cancel");
+
+            if (openSettings)
+            {
+                AppInfo.ShowSettingsUI();
+            }
+
+            SetStatus("Storage permission denied. Enable it in system settings.");
+        }
+        catch (Exception ex)
+        {
+            SetStatus($"Gallery error: {ex.Message}");
+        }
+    }
+
+    private async Task LoadPhotoAsync(FileResult photo)
+    {
+        await using var stream = await photo.OpenReadAsync();
+        using var memoryStream = new MemoryStream();
+        await stream.CopyToAsync(memoryStream);
+        var imageBytes = memoryStream.ToArray();
+        FoodPhoto.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
     }
 
     private async void OnGetLocationClicked(object? sender, EventArgs e)

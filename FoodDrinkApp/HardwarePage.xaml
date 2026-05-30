@@ -43,23 +43,35 @@
                     <Shadow Brush="#15000000" Offset="0,4" Radius="10" Opacity="0.25" />
                 </Border.Shadow>
                 <VerticalStackLayout Spacing="14">
-                    <Grid ColumnDefinitions="*,Auto">
+                    <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
                         <VerticalStackLayout Spacing="2">
                             <Label Text="Camera"
                                    FontSize="17"
                                    FontAttributes="Bold"
                                    TextColor="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}" />
-                            <Label Text="Capture a photo of your meal."
+                            <Label Text="Capture or pick a meal photo."
                                    FontSize="13"
                                    TextColor="{AppThemeBinding Light=#8B6D55, Dark=#D8C4AC}" />
                         </VerticalStackLayout>
                         <Button Grid.Column="1"
-                                Text="Photo"
-                                Padding="16,0"
+                                Text="Gallery"
+                                Padding="12,0"
+                                BackgroundColor="{AppThemeBinding Light=#FFFFFA, Dark=#1A1712}"
+                                TextColor="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}"
+                                BorderColor="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}"
+                                BorderWidth="1.2"
+                                FontAttributes="Bold"
+                                FontSize="13"
+                                CornerRadius="12"
+                                Clicked="OnPickPhotoClicked"
+                                SemanticProperties.Hint="Pick a food image from the gallery" />
+                        <Button Grid.Column="2"
+                                Text="Camera"
+                                Padding="12,0"
                                 BackgroundColor="#D9472B"
                                 TextColor="#FFFFFF"
                                 FontAttributes="Bold"
-                                FontSize="14"
+                                FontSize="13"
                                 CornerRadius="12"
                                 Clicked="OnTakePhotoClicked"
                                 SemanticProperties.Hint="Open the camera to capture a food image" />
