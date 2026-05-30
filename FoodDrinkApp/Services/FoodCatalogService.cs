@@ -29,7 +29,7 @@ public static class FoodCatalogService
             Fat = 8,
             AllergyNote = "Contains dairy and gluten.",
             Tags = "healthy breakfast yogurt berries",
-            ImageUrl = "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/Berry Yogurt Bowl.jpg"
         },
         new()
         {
