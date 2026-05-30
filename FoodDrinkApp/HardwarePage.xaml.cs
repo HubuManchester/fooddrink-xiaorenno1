@@ -27,6 +27,17 @@ public partial class HardwarePage : ContentPage
     {
         try
         {
+            var cameraStatus = await Permissions.CheckStatusAsync<Permissions.Camera>();
+            if (cameraStatus != PermissionStatus.Granted)
+            {
+                cameraStatus = await Permissions.RequestAsync<Permissions.Camera>();
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    SetStatus("Camera permission was denied. Enable camera access in device settings.");
+                    return;
+                }
+            }
+
             if (!MediaPicker.Default.IsCaptureSupported)
             {
                 SetStatus("This device does not support camera capture.");
