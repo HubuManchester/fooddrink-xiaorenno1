@@ -413,16 +413,16 @@
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
-        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light=#FFF4E3, Dark=#120E0B}" />
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light=#FFFBF5, Dark=#0F0C0A}" />
         <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
         <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
         <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light=#DCC8B0, Dark=#4C3B2D}" />
-        <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}" />
+        <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light=#B09A82, Dark=#A08870}" />
         <Setter Property="Shell.NavBarHasShadow" Value="False" />
-        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light=#FFF4E3, Dark=#120E0B}" />
-        <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}" />
-        <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}" />
-        <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light=#FFFBF5, Dark=#0F0C0A}" />
+        <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}" />
+        <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}" />
+        <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light=#B09A82, Dark=#A08870}" />
     </Style>
 
     <Style TargetType="NavigationPage">

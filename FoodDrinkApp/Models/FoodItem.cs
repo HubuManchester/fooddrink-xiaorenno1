@@ -34,6 +34,9 @@ public sealed class FoodItem
     [JsonPropertyName("tags")]
     public string Tags { get; set; } = string.Empty;
 
+    [JsonPropertyName("imageUrl")]
+    public string ImageUrl { get; set; } = string.Empty;
+
     [JsonIgnore]
     public string CaloriesLabel => $"{Calories} kcal";
 

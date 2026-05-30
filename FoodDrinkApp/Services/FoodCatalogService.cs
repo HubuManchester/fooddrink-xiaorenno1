@@ -22,49 +22,105 @@ public static class FoodCatalogService
         {
             Name = "Berry Yogurt Bowl",
             Category = "Breakfast",
-            Description = "Greek yogurt with mixed berries, oats, and a small drizzle of honey.",
+            Description = "Greek yogurt with mixed berries, oats, and a small drizzle of honey. A refreshing and protein-packed way to start your day.",
             Calories = 340,
             Protein = 24,
             Carbs = 42,
             Fat = 8,
             AllergyNote = "Contains dairy and gluten.",
-            Tags = "healthy breakfast yogurt berries"
+            Tags = "healthy breakfast yogurt berries",
+            ImageUrl = "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop"
         },
         new()
         {
             Name = "Chicken Brown Rice Box",
             Category = "Lunch",
-            Description = "Grilled chicken breast with brown rice, spinach, cucumber, and lemon dressing.",
+            Description = "Grilled chicken breast with brown rice, spinach, cucumber, and lemon dressing. Perfect for meal prep.",
             Calories = 520,
             Protein = 38,
             Carbs = 58,
             Fat = 14,
             AllergyNote = "No common allergens recorded.",
-            Tags = "meal prep protein lunch"
+            Tags = "meal prep protein lunch",
+            ImageUrl = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"
         },
         new()
         {
             Name = "Iced Matcha Latte",
             Category = "Drink",
-            Description = "Matcha, milk, and ice. A lower-sugar version is recommended.",
+            Description = "Matcha, milk, and ice. A lower-sugar version is recommended. Rich in antioxidants and gives a gentle energy boost.",
             Calories = 180,
             Protein = 8,
             Carbs = 22,
             Fat = 6,
             AllergyNote = "Contains dairy unless plant-based milk is selected.",
-            Tags = "drink caffeine matcha latte"
+            Tags = "drink caffeine matcha latte",
+            ImageUrl = "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=400&h=300&fit=crop"
         },
         new()
         {
             Name = "Tomato Wholegrain Pasta",
             Category = "Dinner",
-            Description = "Wholegrain pasta with tomato sauce, basil, and roasted vegetables.",
+            Description = "Wholegrain pasta with tomato sauce, basil, and roasted vegetables. A comforting Italian-inspired evening meal.",
             Calories = 610,
             Protein = 18,
             Carbs = 92,
             Fat = 16,
             AllergyNote = "Contains gluten.",
-            Tags = "vegetarian dinner pasta"
+            Tags = "vegetarian dinner pasta",
+            ImageUrl = "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400&h=300&fit=crop"
+        },
+        new()
+        {
+            Name = "Avocado Toast",
+            Category = "Breakfast",
+            Description = "Sourdough toast topped with smashed avocado, cherry tomatoes, poached egg, and a sprinkle of chilli flakes.",
+            Calories = 380,
+            Protein = 14,
+            Carbs = 36,
+            Fat = 20,
+            AllergyNote = "Contains gluten and eggs.",
+            Tags = "breakfast avocado trendy healthy",
+            ImageUrl = "https://images.unsplash.com/photo-1541519227354-08fa5d50cdd9?w=400&h=300&fit=crop"
+        },
+        new()
+        {
+            Name = "Salmon Sashimi Bowl",
+            Category = "Lunch",
+            Description = "Fresh salmon sashimi over sushi rice with edamame, seaweed salad, wasabi, and soy sauce dressing.",
+            Calories = 450,
+            Protein = 34,
+            Carbs = 42,
+            Fat = 16,
+            AllergyNote = "Contains fish and soy.",
+            Tags = "japanese seafood rice bowl lunch",
+            ImageUrl = "https://images.unsplash.com/photo-1579584425555-c3ce17fd4355?w=400&h=300&fit=crop"
+        },
+        new()
+        {
+            Name = "Mango Smoothie",
+            Category = "Drink",
+            Description = "Ripe mango blended with Greek yogurt, a dash of vanilla, and a pinch of turmeric for golden colour.",
+            Calories = 220,
+            Protein = 6,
+            Carbs = 44,
+            Fat = 3,
+            AllergyNote = "Contains dairy.",
+            Tags = "smoothie fruit mango refreshing drink",
+            ImageUrl = "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&h=300&fit=crop"
+        },
+        new()
+        {
+            Name = "Beef Burger Deluxe",
+            Category = "Dinner",
+            Description = "Angus beef patty with aged cheddar, caramelised onions, lettuce, tomato, and special sauce on a brioche bun.",
+            Calories = 750,
+            Protein = 38,
+            Carbs = 52,
+            Fat = 42,
+            AllergyNote = "Contains gluten, dairy, and eggs.",
+            Tags = "burger beef cheese indulgent dinner",
+            ImageUrl = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop"
         }
     ];
 

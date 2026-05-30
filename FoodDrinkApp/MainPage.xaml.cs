@@ -34,6 +34,15 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private async void OnImageTapped(object? sender, TappedEventArgs e)
+    {
+        if (sender is VisualElement element && element.BindingContext is FoodDrinkApp.Models.FoodItem item)
+        {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+            await Shell.Current.GoToAsync($"{nameof(FoodDetailPage)}?id={Uri.EscapeDataString(item.Id)}");
+        }
+    }
+
     private async void OnSearchTextChanged(object? sender, TextChangedEventArgs e)
     {
         await LoadFoodItemsAsync(e.NewTextValue);

@@ -49,9 +49,18 @@ public partial class FoodDetailPage : ContentPage
         NameLabel.Text = currentItem.Name;
         CategoryLabel.Text = currentItem.Category;
         CaloriesLabel.Text = currentItem.CaloriesLabel;
-        MacroLabel.Text = currentItem.MacroSummary;
         DescriptionLabel.Text = currentItem.Description;
         AllergyLabel.Text = currentItem.AllergyNote;
+
+        if (!string.IsNullOrWhiteSpace(currentItem.ImageUrl))
+        {
+            HeroImage.Source = ImageSource.FromUri(new Uri(currentItem.ImageUrl));
+        }
+        else
+        {
+            HeroImage.Source = null;
+        }
+
         SemanticProperties.SetDescription(NameLabel, currentItem.AccessibleSummary);
     }
 
