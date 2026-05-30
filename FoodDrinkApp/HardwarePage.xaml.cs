@@ -27,21 +27,28 @@ public partial class HardwarePage : ContentPage
     {
         try
         {
+            if (!MediaPicker.Default.IsCaptureSupported)
+            {
+                SetStatus("This device does not support camera capture.");
+                return;
+            }
+
             var cameraStatus = await Permissions.CheckStatusAsync<Permissions.Camera>();
             if (cameraStatus != PermissionStatus.Granted)
             {
                 cameraStatus = await Permissions.RequestAsync<Permissions.Camera>();
                 if (cameraStatus != PermissionStatus.Granted)
                 {
-                    SetStatus("Camera permission was denied. Enable camera access in device settings.");
+                    if (!Permissions.ShouldShowRationale<Permissions.Camera>())
+                    {
+                        await DisplayAlert(
+                            "Camera permission required",
+                            "Camera permission was permanently denied. Please enable it in: System Settings > Apps > NutriBite > Permissions > Camera.",
+                            "OK");
+                    }
+                    SetStatus("Camera permission was denied.");
                     return;
                 }
-            }
-
-            if (!MediaPicker.Default.IsCaptureSupported)
-            {
-                SetStatus("This device does not support camera capture.");
-                return;
             }
 
             var photo = await MediaPicker.Default.CapturePhotoAsync();
