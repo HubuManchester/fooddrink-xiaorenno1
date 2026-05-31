@@ -42,7 +42,7 @@ public static class FoodCatalogService
             Fat = 14,
             AllergyNote = "No common allergens recorded.",
             Tags = "meal prep protein lunch",
-            ImageUrl = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/chicken_brown_rice_box.jpg"
         },
         new()
         {
@@ -55,7 +55,7 @@ public static class FoodCatalogService
             Fat = 6,
             AllergyNote = "Contains dairy unless plant-based milk is selected.",
             Tags = "drink caffeine matcha latte",
-            ImageUrl = "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/iced_matcha_latte.jpg"
         },
         new()
         {
