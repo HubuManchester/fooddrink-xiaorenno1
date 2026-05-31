@@ -52,15 +52,6 @@ public partial class FoodDetailPage : ContentPage
         DescriptionLabel.Text = currentItem.Description;
         AllergyLabel.Text = currentItem.AllergyNote;
 
-        if (!string.IsNullOrWhiteSpace(currentItem.ImageUrl))
-        {
-            HeroImage.Source = ImageSource.FromUri(new Uri(currentItem.ImageUrl));
-        }
-        else
-        {
-            HeroImage.Source = null;
-        }
-
         SemanticProperties.SetDescription(NameLabel, currentItem.AccessibleSummary);
     }
 

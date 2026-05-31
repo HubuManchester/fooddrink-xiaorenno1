@@ -17,7 +17,7 @@
                     <RoundRectangle CornerRadius="0,0,28,28" />
                 </Border.StrokeShape>
                 <Grid IsClippedToBounds="True">
-                    <Image x:Name="HeroImage"
+                    <Image Source="{Binding ImageUrl}"
                            Aspect="AspectFill"
                            SemanticProperties.Description="Large food photo"
                            HorizontalOptions="Fill"
