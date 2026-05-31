@@ -6,8 +6,8 @@
     <ScrollView>
         <ScrollView.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="{AppThemeBinding Light=#FFF1DA, Dark=#130F0C}" Offset="0.0" />
-                <GradientStop Color="{AppThemeBinding Light=#FFF9EF, Dark=#0F1711}" Offset="1.0" />
+                <GradientStop Color="{AppThemeBinding Light=#EFF6FF, Dark=#0F172A}" Offset="0.0" />
+                <GradientStop Color="{AppThemeBinding Light=#F8FAFC, Dark=#0A0F1A}" Offset="1.0" />
             </LinearGradientBrush>
         </ScrollView.Background>
 
@@ -40,11 +40,11 @@
                                        SemanticProperties.HeadingLevel="Level1" />
                                 <Label x:Name="CategoryLabel"
                                        FontSize="14"
-                                       TextColor="#FFDDB5" />
+                                       TextColor="#FCD34D" />
                             </VerticalStackLayout>
                             <Border Grid.Column="1"
                                     StrokeThickness="0"
-                                    BackgroundColor="#D9472B"
+                                    BackgroundColor="#FBBF24"
                                     Padding="14,9"
                                     VerticalOptions="Start">
                                 <Border.StrokeShape>
@@ -53,7 +53,7 @@
                                 <Label x:Name="CaloriesLabel"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="#FFFFFF" />
+                                       TextColor="#1E293B" />
                             </Border>
                         </Grid>
                     </Grid>
@@ -63,8 +63,8 @@
             <VerticalStackLayout Grid.Row="1" Padding="20,16" Spacing="16">
 
                 <Border StrokeThickness="1.2"
-                        Stroke="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}"
-                        BackgroundColor="{AppThemeBinding Light=#FFFFFA, Dark=#1A1712}"
+                        Stroke="{AppThemeBinding Light=#BFDBFE, Dark=#1E3A5F}"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
                         Padding="18">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="18" />
@@ -76,41 +76,41 @@
                         <Label Text="Nutrition breakdown"
                                FontSize="17"
                                FontAttributes="Bold"
-                               TextColor="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}" />
+                               TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
                         <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="10">
-                            <Border StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#E8F5EA, Dark=#162E1C}" Padding="12,10">
+                            <Border StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#EFF6FF, Dark=#1E3A5F}" Padding="12,10">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="14" />
                                 </Border.StrokeShape>
                                 <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
                                     <Label FontSize="22" FontAttributes="Bold"
                                            Text="{Binding Protein}"
-                                           TextColor="{AppThemeBinding Light=#2E7A4F, Dark=#6DD98A}" HorizontalTextAlignment="Center" />
-                                    <Label FontSize="11" TextColor="{AppThemeBinding Light=#5A9C72, Dark=#7DD99A}"
+                                           TextColor="{AppThemeBinding Light=#2563EB, Dark=#93C5FD}" HorizontalTextAlignment="Center" />
+                                    <Label FontSize="11" TextColor="{AppThemeBinding Light=#60A5FA, Dark=#A8C8FF}"
                                            Text="Protein (g)" HorizontalTextAlignment="Center" />
                                 </VerticalStackLayout>
                             </Border>
-                            <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#FFF3DC, Dark=#3A2510}" Padding="12,10">
+                            <Border Grid.Column="1" StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#FEF9E7, Dark=#3A2A10}" Padding="12,10">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="14" />
                                 </Border.StrokeShape>
                                 <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
                                     <Label FontSize="22" FontAttributes="Bold"
                                            Text="{Binding Carbs}"
-                                           TextColor="{AppThemeBinding Light=#B07515, Dark=#FFCF70}" HorizontalTextAlignment="Center" />
-                                    <Label FontSize="11" TextColor="{AppThemeBinding Light=#C99A40, Dark=#E8B050}"
+                                           TextColor="{AppThemeBinding Light=#B45309, Dark=#FCD34D}" HorizontalTextAlignment="Center" />
+                                    <Label FontSize="11" TextColor="{AppThemeBinding Light=#D97706, Dark=#FDE68A}"
                                            Text="Carbs (g)" HorizontalTextAlignment="Center" />
                                 </VerticalStackLayout>
                             </Border>
-                            <Border Grid.Column="2" StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#FFE8E0, Dark=#3A1812}" Padding="12,10">
+                            <Border Grid.Column="2" StrokeThickness="0" BackgroundColor="{AppThemeBinding Light=#FEF2F2, Dark=#3A1012}" Padding="12,10">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="14" />
                                 </Border.StrokeShape>
                                 <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
                                     <Label FontSize="22" FontAttributes="Bold"
                                            Text="{Binding Fat}"
-                                           TextColor="{AppThemeBinding Light=#C4451A, Dark=#FF8060}" HorizontalTextAlignment="Center" />
-                                    <Label FontSize="11" TextColor="{AppThemeBinding Light=#D48055, Dark=#FF9070}"
+                                           TextColor="{AppThemeBinding Light=#DC2626, Dark=#F87171}" HorizontalTextAlignment="Center" />
+                                    <Label FontSize="11" TextColor="{AppThemeBinding Light=#EF4444, Dark=#FCA5A5}"
                                            Text="Fat (g)" HorizontalTextAlignment="Center" />
                                 </VerticalStackLayout>
                             </Border>
@@ -119,8 +119,8 @@
                 </Border>
 
                 <Border StrokeThickness="1.2"
-                        Stroke="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}"
-                        BackgroundColor="{AppThemeBinding Light=#FFFFFA, Dark=#1A1712}"
+                        Stroke="{AppThemeBinding Light=#BFDBFE, Dark=#1E3A5F}"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
                         Padding="18">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="18" />
@@ -132,15 +132,15 @@
                         <Label Text="About this item"
                                FontSize="17"
                                FontAttributes="Bold"
-                               TextColor="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}" />
+                               TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
                         <Label x:Name="DescriptionLabel"
                                Grid.Row="1"
                                FontSize="14.5"
                                LineBreakMode="WordWrap"
-                               TextColor="{AppThemeBinding Light=#5A4838, Dark=#D0BCA4}" />
+                               TextColor="{AppThemeBinding Light=#475569, Dark=#CBD5E1}" />
                         <Border Grid.Row="2"
                                 StrokeThickness="0"
-                                BackgroundColor="{AppThemeBinding Light=#FFF0C9, Dark=#352510}"
+                                BackgroundColor="{AppThemeBinding Light=#FEF9E7, Dark=#3A2A10}"
                                 Padding="14,10">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12" />
@@ -148,20 +148,20 @@
                             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
                                 <Border StrokeThickness="0"
                                         WidthRequest="24" HeightRequest="24"
-                                        BackgroundColor="{AppThemeBinding Light=#FFE8CC, Dark=#4A3015}">
+                                        BackgroundColor="{AppThemeBinding Light=#FDE68A, Dark=#5C3A10}">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="12" />
                                     </Border.StrokeShape>
                                     <Label Text="!"
                                            FontSize="18" FontAttributes="Bold"
-                                           TextColor="{AppThemeBinding Light=#A95517, Dark=#FFD18E}"
+                                           TextColor="{AppThemeBinding Light=#B45309, Dark=#FCD34D}"
                                            VerticalTextAlignment="Center"
                                            HorizontalTextAlignment="Center" />
                                 </Border>
                                 <Label x:Name="AllergyLabel"
                                        FontSize="13.5"
                                        FontAttributes="Bold"
-                                       TextColor="{AppThemeBinding Light=#A95517, Dark=#FFD18E}"
+                                       TextColor="{AppThemeBinding Light=#B45309, Dark=#FCD34D}"
                                        VerticalTextAlignment="Center" />
                             </Grid>
                         </Border>
@@ -174,7 +174,7 @@
                             FontSize="14"
                             CornerRadius="14"
                             HeightRequest="48"
-                            BackgroundColor="#D9472B"
+                            BackgroundColor="#2563EB"
                             TextColor="#FFFFFF"
                             Clicked="OnSpeakClicked"
                             SemanticProperties.Hint="Read the nutrition summary aloud" />
@@ -184,10 +184,10 @@
                             FontSize="14"
                             CornerRadius="14"
                             HeightRequest="48"
-                            BackgroundColor="{AppThemeBinding Light=#FFFFFA, Dark=#1A1712}"
-                            BorderColor="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}"
+                            BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                            BorderColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}"
                             BorderWidth="1.2"
-                            TextColor="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}"
+                            TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}"
                             Clicked="OnStopSpeechClicked"
                             SemanticProperties.Hint="Stop the current speech" />
                 </Grid>
@@ -197,8 +197,8 @@
                         FontSize="14"
                         CornerRadius="14"
                         HeightRequest="48"
-                        BackgroundColor="#2E7A4F"
-                        TextColor="#FFFFFF"
+                        BackgroundColor="#FBBF24"
+                        TextColor="#1E293B"
                         Clicked="OnVibrateClicked"
                         SemanticProperties.Hint="Use mobile vibration as a meal reminder" />
 

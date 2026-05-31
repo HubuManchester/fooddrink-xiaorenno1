@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Style TargetType="ActivityIndicator">
-        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
     </Style>
 
     <Style TargetType="IndicatorView">
@@ -24,8 +24,8 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light=#FFFFFF, Dark=#261307}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#3B82F6}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontAttributes" Value="Bold"/>
@@ -40,8 +40,8 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="TextColor" Value="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}" />
-                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}" />
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#94A3B8}" />
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#E2E8F0, Dark=#334155}" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver" />
@@ -51,7 +51,7 @@
     </Style>
 
     <Style TargetType="CheckBox">
-        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -90,11 +90,11 @@
     </Style>
 
     <Style TargetType="Editor">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#FFF9EF, Dark=#211A14}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#F8FAFC, Dark=#1E293B}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
         <Setter Property="MinimumHeightRequest" Value="48"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -112,11 +112,11 @@
     </Style>
 
     <Style TargetType="Entry">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#FFF9EF, Dark=#211A14}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#F8FAFC, Dark=#1E293B}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
         <Setter Property="MinimumHeightRequest" Value="48"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -156,7 +156,7 @@
     </Style>
 
     <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="14" />
@@ -175,14 +175,14 @@
     </Style>
 
     <Style TargetType="Label" x:Key="Headline">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#1E3A5F, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="32" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="Label" x:Key="SubHeadline">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#1E3A5F, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
@@ -194,9 +194,9 @@
     </Style>
 
     <Style TargetType="Picker">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
-        <Setter Property="TitleColor" Value="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#FFF9EF, Dark=#211A14}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+        <Setter Property="TitleColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#F8FAFC, Dark=#1E293B}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="15" />
         <Setter Property="MinimumHeightRequest" Value="48"/>
@@ -217,7 +217,7 @@
     </Style>
 
     <Style TargetType="ProgressBar">
-        <Setter Property="ProgressColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="ProgressColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -258,9 +258,9 @@
     </Style>
 
     <Style TargetType="SearchBar">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=#9A7B63, Dark=#BFA58E}" />
-        <Setter Property="CancelButtonColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FFB15D}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
+        <Setter Property="CancelButtonColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="15" />
@@ -310,9 +310,9 @@
     </Style>
 
     <Style TargetType="Slider">
-        <Setter Property="MinimumTrackColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="MinimumTrackColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
         <Setter Property="MaximumTrackColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
-        <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -334,7 +334,7 @@
     </Style>
 
     <Style TargetType="Switch">
-        <Setter Property="OnColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="OnColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
         <Setter Property="ThumbColor" Value="{StaticResource White}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -348,8 +348,8 @@
                     </VisualState>
                     <VisualState x:Name="On">
                         <VisualState.Setters>
-                            <Setter Property="OnColor" Value="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Gray200}}" />
-                            <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+                            <Setter Property="OnColor" Value="{AppThemeBinding Light={StaticResource AccentYellow}, Dark=#FBBF24}" />
+                            <Setter Property="ThumbColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#FFFFFF}" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="Off">
@@ -413,29 +413,29 @@
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
-        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light=#FFFBF5, Dark=#0F0C0A}" />
-        <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
-        <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light=#3A2518, Dark=#FFF2DF}" />
-        <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light=#DCC8B0, Dark=#4C3B2D}" />
-        <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light=#B09A82, Dark=#A08870}" />
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light=#F0F5FF, Dark=#0F172A}" />
+        <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+        <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+        <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light=#CBD5E1, Dark=#475569}" />
+        <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
         <Setter Property="Shell.NavBarHasShadow" Value="False" />
-        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light=#FFFBF5, Dark=#0F0C0A}" />
-        <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}" />
-        <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light=#D9472B, Dark=#FF9C7B}" />
-        <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light=#B09A82, Dark=#A08870}" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light=#F0F5FF, Dark=#0F172A}" />
+        <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
+        <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
+        <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
     </Style>
 
     <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
-        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
-        <Setter Property="IconColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
+        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource VeryLightBlue}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#F1F5F9}" />
+        <Setter Property="IconColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#F1F5F9}" />
     </Style>
 
     <Style TargetType="TabbedPage">
-        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
-        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
-        <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
-        <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource VeryLightBlue}, Dark={StaticResource Gray950}}" />
+        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#F1F5F9}" />
+        <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray950}}" />
+        <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource PrimaryBlue}, Dark=#60A5FA}" />
     </Style>
 
 </ResourceDictionary>

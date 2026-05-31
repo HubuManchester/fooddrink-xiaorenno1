@@ -7,9 +7,9 @@
     <Grid RowDefinitions="Auto,*">
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="{AppThemeBinding Light=#FFF1DA, Dark=#130F0C}" Offset="0.0" />
-                <GradientStop Color="{AppThemeBinding Light=#FFF9EF, Dark=#0F1711}" Offset="0.5" />
-                <GradientStop Color="{AppThemeBinding Light=#F7EFE3, Dark=#0E1511}" Offset="1.0" />
+                <GradientStop Color="{AppThemeBinding Light=#EFF6FF, Dark=#0F172A}" Offset="0.0" />
+                <GradientStop Color="{AppThemeBinding Light=#F0F9FF, Dark=#0F172A}" Offset="0.5" />
+                <GradientStop Color="{AppThemeBinding Light=#F8FAFC, Dark=#0A0F1A}" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
 
@@ -20,10 +20,10 @@
                 </Border.StrokeShape>
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#D9472B" Offset="0.0" />
-                        <GradientStop Color="#E86A33" Offset="0.45" />
-                        <GradientStop Color="#FF37FF00" Offset="0.75" />
-                        <GradientStop Color="#3D8B5F" Offset="1.0" />
+                        <GradientStop Color="#2563EB" Offset="0.0" />
+                        <GradientStop Color="#3B82F6" Offset="0.4" />
+                        <GradientStop Color="#FBBF24" Offset="0.75" />
+                        <GradientStop Color="#FCD34D" Offset="1.0" />
                     </LinearGradientBrush>
                 </Border.Background>
                 <Border.Shadow>
@@ -38,7 +38,7 @@
                     <Label Grid.Row="1"
                            Text="Track nutrition, capture photos, and explore flavours."
                            FontSize="15"
-                           TextColor="#FFF0D8" />
+                           TextColor="#E0EFFF" />
                     <Grid Grid.Row="2" ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,6,0,0">
                         <Border BackgroundColor="#28FFFFFF" StrokeThickness="0" Padding="12,9">
                             <Border.StrokeShape>
@@ -64,8 +64,8 @@
                     </Grid>
                     <Grid Grid.Row="3" ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,8,0,0">
                         <Border StrokeThickness="1.5"
-                                Stroke="#FFE0BA"
-                                BackgroundColor="#FFFFFA"
+                                Stroke="#BFDBFE"
+                                BackgroundColor="#FFFFFF"
                                 Padding="0">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="14" />
@@ -74,8 +74,8 @@
                                        Placeholder="Search foods, drinks, categories..."
                                        TextChanged="OnSearchTextChanged"
                                        SearchButtonPressed="OnSearchButtonPressed"
-                                       TextColor="#3A2518"
-                                       PlaceholderColor="#9A7B63"
+                                       TextColor="#1E293B"
+                                       PlaceholderColor="#94A3B8"
                                        BackgroundColor="Transparent"
                                        FontSize="14"
                                        SemanticProperties.Hint="Search the food and drink list" />
@@ -83,8 +83,8 @@
                         <Button Grid.Column="1"
                                 Text="+  Add"
                                 Padding="16,0"
-                                BackgroundColor="#2E7A4F"
-                                TextColor="#FFFFFF"
+                                BackgroundColor="#FBBF24"
+                                TextColor="#1E293B"
                                 FontAttributes="Bold"
                                 FontSize="14"
                                 CornerRadius="14"
@@ -103,8 +103,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:FoodItem">
                         <Border StrokeThickness="1.2"
-                                Stroke="{AppThemeBinding Light=#F0D6B8, Dark=#3E3023}"
-                                BackgroundColor="{AppThemeBinding Light=#FFFFFA, Dark=#1A1712}"
+                                Stroke="{AppThemeBinding Light=#E2E8F0, Dark=#334155}"
+                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
                                 Padding="0"
                                 Margin="0,0,0,14">
                             <Border.StrokeShape>
@@ -114,7 +114,7 @@
                                 <Shadow Brush="#1A000000" Offset="0,6" Radius="16" Opacity="0.3" />
                             </Border.Shadow>
                             <Grid RowDefinitions="160,*">
-                                <Grid IsClippedToBounds="True" BackgroundColor="{AppThemeBinding Light=#F5EDE0, Dark=#252015}">
+                                <Grid IsClippedToBounds="True" BackgroundColor="{AppThemeBinding Light=#F1F5F9, Dark=#0F172A}">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnImageTapped"
                                                                 CommandParameter="{Binding Id}" />
@@ -132,7 +132,8 @@
                                             </LinearGradientBrush>
                                         </Border.Background>
                                     </Border>
-                                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="End">
+                                    <Grid Padding="14,12" VerticalOptions="End">
+                                        <Grid ColumnDefinitions="*,Auto">
                                             <VerticalStackLayout Spacing="2">
                                                 <Label Text="{Binding Name}"
                                                        FontSize="19"
@@ -143,12 +144,12 @@
                                                        SemanticProperties.HeadingLevel="Level2" />
                                                 <Label Text="{Binding Category}"
                                                        FontSize="13"
-                                                       TextColor="#FFDDB5"
+                                                       TextColor="#FCD34D"
                                                        FontAttributes="Bold" />
                                             </VerticalStackLayout>
                                             <Border Grid.Column="1"
                                                     StrokeThickness="0"
-                                                    BackgroundColor="#D9472B"
+                                                    BackgroundColor="#FBBF24"
                                                     Padding="12,7"
                                                     VerticalOptions="End">
                                                 <Border.StrokeShape>
@@ -157,10 +158,11 @@
                                                 <Label Text="{Binding CaloriesLabel}"
                                                        FontSize="13"
                                                        FontAttributes="Bold"
-                                                       TextColor="#FFFFFF" />
+                                                       TextColor="#1E293B" />
                                             </Border>
                                         </Grid>
                                     </Grid>
+                                </Grid>
                                 <Grid Grid.Row="1" Padding="16,14">
                                     <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="8"
                                           ColumnDefinitions="*,*">
@@ -168,12 +170,12 @@
                                                Grid.ColumnSpan="2"
                                                Text="{Binding Description}"
                                                FontSize="13.5"
-                                               TextColor="{AppThemeBinding Light=#6E5A47, Dark=#D8C4AC}"
+                                               TextColor="{AppThemeBinding Light=#475569, Dark=#CBD5E1}"
                                                LineBreakMode="TailTruncation"
                                                MaxLines="2" />
                                         <Border Grid.Row="1"
                                                 StrokeThickness="0"
-                                                BackgroundColor="{AppThemeBinding Light=#EDF5EE, Dark=#1A2E20}"
+                                                BackgroundColor="{AppThemeBinding Light=#EFF6FF, Dark=#1E3A5F}"
                                                 Padding="10,7">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="10" />
@@ -181,11 +183,11 @@
                                             <Label Text="{Binding MacroSummary}"
                                                    FontSize="12.5"
                                                    FontAttributes="Bold"
-                                                   TextColor="{AppThemeBinding Light=#2E7A4F, Dark=#7DD99A}" />
+                                                   TextColor="{AppThemeBinding Light=#2563EB, Dark=#93C5FD}" />
                                         </Border>
                                         <Border Grid.Row="1" Grid.Column="1"
                                                 StrokeThickness="0"
-                                                BackgroundColor="{AppThemeBinding Light=#FFF0C9, Dark=#3A2810}"
+                                                BackgroundColor="{AppThemeBinding Light=#FEF9E7, Dark=#3A2A10}"
                                                 Padding="10,7">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="10" />
@@ -193,7 +195,7 @@
                                             <Label Text="{Binding AllergyNote}"
                                                    FontSize="11.5"
                                                    FontAttributes="Bold"
-                                                   TextColor="{AppThemeBinding Light=#A95517, Dark=#FFD18E}"
+                                                   TextColor="{AppThemeBinding Light=#B45309, Dark=#FCD34D}"
                                                    LineBreakMode="TailTruncation"
                                                    MaxLines="1" />
                                         </Border>
@@ -205,8 +207,8 @@
                                                 FontSize="14"
                                                 CornerRadius="12"
                                                 HeightRequest="42"
-                                                BackgroundColor="{AppThemeBinding Light=#D9472B, Dark=#FF7D55}"
-                                                TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#1A0A02}"
+                                                BackgroundColor="{AppThemeBinding Light=#2563EB, Dark=#3B82F6}"
+                                                TextColor="#FFFFFF"
                                                 CommandParameter="{Binding Id}"
                                                 Clicked="OnDetailsClicked"
                                                 SemanticProperties.Hint="Open nutrition details" />
