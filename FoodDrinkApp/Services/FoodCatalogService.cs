@@ -68,7 +68,7 @@ public static class FoodCatalogService
             Fat = 16,
             AllergyNote = "Contains gluten.",
             Tags = "vegetarian dinner pasta",
-            ImageUrl = "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/tomato_wholegrain_pasta.jpg"
         },
         new()
         {
@@ -81,7 +81,7 @@ public static class FoodCatalogService
             Fat = 20,
             AllergyNote = "Contains gluten and eggs.",
             Tags = "breakfast avocado trendy healthy",
-            ImageUrl = "https://images.unsplash.com/photo-1541519227354-08fa5d50cdd9?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/avocado_toast.jpg"
         },
         new()
         {
@@ -94,7 +94,7 @@ public static class FoodCatalogService
             Fat = 16,
             AllergyNote = "Contains fish and soy.",
             Tags = "japanese seafood rice bowl lunch",
-            ImageUrl = "https://images.unsplash.com/photo-1579584425555-c3ce17fd4355?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/salmon_sashimi_bowl.jpg"
         },
         new()
         {
@@ -107,7 +107,7 @@ public static class FoodCatalogService
             Fat = 3,
             AllergyNote = "Contains dairy.",
             Tags = "smoothie fruit mango refreshing drink",
-            ImageUrl = "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/mango_smoothie.jpg"
         },
         new()
         {
@@ -120,7 +120,7 @@ public static class FoodCatalogService
             Fat = 42,
             AllergyNote = "Contains gluten, dairy, and eggs.",
             Tags = "burger beef cheese indulgent dinner",
-            ImageUrl = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop"
+            ImageUrl = "Resources/Images/beef_burger_deluxe.jpg"
         }
     ];
 
