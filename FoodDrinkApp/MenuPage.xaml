@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:FoodDrinkApp.Models"
+             x:Class="FoodDrinkApp.MenuPage"
+             Title="My Menu">
+    <Grid RowDefinitions="Auto,Auto,*" BackgroundColor="{AppThemeBinding Light=#F8FAFC, Dark=#0A0F1A}">
+
+        <Grid Padding="20,20,20,12" BackgroundColor="{AppThemeBinding Light=#EFF6FF, Dark=#0F172A}">
+            <Border StrokeThickness="1.5" Stroke="#BFDBFE" BackgroundColor="#FFFFFF" Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <SearchBar x:Name="SearchBar"
+                           Placeholder="Search dishes to add..."
+                           TextChanged="OnSearchTextChanged"
+                           SearchButtonPressed="OnSearchButtonPressed"
+                           TextColor="#1E293B"
+                           PlaceholderColor="#94A3B8"
+                           BackgroundColor="Transparent"
+                           FontSize="14"
+                           SemanticProperties.Hint="Search all available dishes" />
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Padding="20,0,20,8" ColumnDefinitions="Auto,*,Auto">
+            <Label Text="Search Results"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}"
+                   VerticalTextAlignment="Center" />
+            <Label Grid.Column="1" x:Name="ResultCountLabel"
+                   FontSize="13"
+                   TextColor="{AppThemeBinding Light=#94A3B8, Dark=#64748B}"
+                   VerticalTextAlignment="Center"
+                   Margin="10,0,0,0" />
+            <Button Grid.Column="2" Text="Clear Menu"
+                    FontSize="12"
+                    Padding="12,6"
+                    CornerRadius="10"
+                    BackgroundColor="{AppThemeBinding Light=#FEF2F2, Dark=#3A1012}"
+                    TextColor="{AppThemeBinding Light=#DC2626, Dark=#F87171}"
+                    Clicked="OnClearMenuClicked"
+                    SemanticProperties.Hint="Remove all items from your menu" />
+        </Grid>
+
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout Padding="20,0,20,20" Spacing="14">
+
+                <CollectionView x:Name="SearchResults"
+                                IsVisible="False"
+                                SelectionMode="None"
+                                ItemsLayout="VerticalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:FoodItem">
+                            <Border StrokeThickness="1.2"
+                                    Stroke="{AppThemeBinding Light=#E2E8F0, Dark=#334155}"
+                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                                    Padding="14"
+                                    Margin="0,0,0,10">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="16" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="8">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+                                    <Label Grid.Column="1"
+                                           Text="{Binding CaloriesLabel}"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="#FBBF24"
+                                           VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Description}"
+                                           FontSize="12.5"
+                                           LineBreakMode="TailTruncation"
+                                           MaxLines="1"
+                                           TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" />
+                                    <Button Grid.Row="1" Grid.Column="1"
+                                            Text="+ Add"
+                                            FontSize="13"
+                                            FontAttributes="Bold"
+                                            Padding="16,6"
+                                            CornerRadius="10"
+                                            BackgroundColor="#2563EB"
+                                            TextColor="#FFFFFF"
+                                            CommandParameter="{Binding Id}"
+                                            Clicked="OnAddToMenuClicked"
+                                            SemanticProperties.Hint="Add this dish to your menu" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label x:Name="NoResultsLabel"
+                       IsVisible="False"
+                       Text="No dishes found. Try a different keyword."
+                       FontSize="14"
+                       TextColor="{AppThemeBinding Light=#94A3B8, Dark=#64748B}"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,20,0,0" />
+
+                <BoxView HeightRequest="1"
+                         Color="{AppThemeBinding Light=#E2E8F0, Dark=#334155}"
+                         Margin="0,4" />
+
+                <Label Text="Your Menu"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+
+                <Border x:Name="EmptyMenuBanner"
+                        StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light=#EFF6FF, Dark=#1E3A5F}"
+                        Padding="20,30">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                        <Label Text="Your menu is empty"
+                               FontSize="17"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#2563EB, Dark=#93C5FD}"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="Search for dishes above and tap + Add to build your menu."
+                               FontSize="13.5"
+                               TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <CollectionView x:Name="MenuCollection"
+                                IsVisible="False"
+                                SelectionMode="None"
+                                ItemsLayout="VerticalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:MenuEntry">
+                            <Border StrokeThickness="1.2"
+                                    Stroke="{AppThemeBinding Light=#E2E8F0, Dark=#334155}"
+                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                                    Padding="14,12"
+                                    Margin="0,0,0,8">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="14" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="8">
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="{Binding Item.Name}"
+                                               FontSize="15"
+                                               FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+                                        <Label Text="{Binding Item.CaloriesLabel}"
+                                               FontSize="12.5"
+                                               TextColor="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
+                                    </VerticalStackLayout>
+                                    <Button Grid.Column="1"
+                                            Text="-"
+                                            FontSize="16"
+                                            FontAttributes="Bold"
+                                            WidthRequest="36" HeightRequest="36"
+                                            CornerRadius="18"
+                                            Padding="0"
+                                            BackgroundColor="{AppThemeBinding Light=#F1F5F9, Dark=#334155}"
+                                            TextColor="{AppThemeBinding Light=#475569, Dark=#CBD5E1}"
+                                            CommandParameter="{Binding Item}"
+                                            Clicked="OnDecrementClicked" />
+                                    <Label Grid.Column="2"
+                                           Text="{Binding Quantity}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center"
+                                           WidthRequest="30" />
+                                    <Button Grid.Column="3"
+                                            Text="+"
+                                            FontSize="16"
+                                            FontAttributes="Bold"
+                                            WidthRequest="36" HeightRequest="36"
+                                            CornerRadius="18"
+                                            Padding="0"
+                                            BackgroundColor="{AppThemeBinding Light=#2563EB, Dark=#3B82F6}"
+                                            TextColor="#FFFFFF"
+                                            CommandParameter="{Binding Item}"
+                                            Clicked="OnIncrementClicked" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Border x:Name="TotalCard"
+                        IsVisible="False"
+                        StrokeThickness="0"
+                        Padding="18,16">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#2563EB" Offset="0.0" />
+                            <GradientStop Color="#3B82F6" Offset="0.5" />
+                            <GradientStop Color="#FBBF24" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#33000000" Offset="0,6" Radius="16" />
+                    </Border.Shadow>
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="4">
+                        <Label Text="Menu Total"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="#FFFFFF" />
+                        <Label Grid.Column="1" x:Name="TotalItemsLabel"
+                               FontSize="14"
+                               TextColor="#DBEAFE"
+                               VerticalTextAlignment="Center" />
+                        <Label Grid.Row="1"
+                               x:Name="TotalCaloriesLabel"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               TextColor="#FFFFFF" />
+                        <Label Grid.Row="1" Grid.Column="1"
+                               x:Name="TotalKcalLabel"
+                               FontSize="14"
+                               TextColor="#FCD34D"
+                               VerticalTextAlignment="End"
+                               Margin="0,0,0,6" />
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
