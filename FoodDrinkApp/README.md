@@ -1,58 +1,96 @@
-# 食光营养助手
+# NutriBite — Food & Drink Tracker
 
-食光营养助手是一个基于 .NET MAUI 的“食品与饮品”课程项目应用。应用可以记录食品和饮品，展示营养摘要，验证用户输入，并演示移动设备硬件功能。
+NutriBite is a cross-platform .NET MAUI application developed for the **6G6Z0014 Mobile Computing** module (Manchester Metropolitan University). It allows users to browse, search, and log food and drink records, view nutrition details, and interact with onboard mobile hardware such as the camera, location services, and text-to-speech.
 
-## 主要功能
+## Features
 
-- 食品和饮品列表，支持搜索和详情页。
-- 添加记录表单，检查必填项和营养数值。
-- 使用相机拍摄食品照片并预览。
-- 使用定位记录用餐或购买地点。
-- 使用文字转语音朗读营养摘要和帮助内容。
-- 使用震动与触觉反馈提供操作提醒。
-- 支持主题切换和大字体模式。
-- 包含语义标签、屏幕阅读器播报和清晰的验证提示。
+- **Food catalogue** — browse pre-loaded items with photos, nutrition breakdown, and allergy notes
+- **Search & filter** — real‑time text search across names, categories, descriptions, and tags
+- **Add record form** — input name, category, description, macros, and optional image URL with validation
+- **Detail page** — full nutrition card, about section, speech read‑out, and vibration reminder
+- **Menu builder** — search dishes, add/remove items, track total calories and item count
+- **Hardware demo page** — camera capture, gallery pick, geolocation with reverse geocoding, text‑to‑speech, haptic feedback, and vibration
+- **Settings** — system/light/dark theme picker, large text toggle for accessibility
+- **Help & About** — in‑app guide covering all features, accessibility (WCAG 2.1), and hardware notes
 
-## 评分点覆盖
+## Accessibility (WCAG 2.1)
 
-- UI/UX 与无障碍：XAML 页面、底部导航、一致的视觉风格、深色模式、语义描述和屏幕阅读器播报。
-- 移动硬件：相机、定位、文字转语音、震动和触觉反馈。
-- 功能完整性：列表、搜索、添加、详情、设置和硬件演示流程。
-- 验证与错误处理：必填项检查、数字检查、权限错误和硬件不可用提示。
-- 代码质量：模型和服务分离、命名清晰、可复用的目录服务，以及范围清晰的页面代码。
-- 部署：面向 Android 和 Windows 的 .NET MAUI 跨平台应用。
-- GitHub 使用：建议持续提交，例如 `添加食品列表`、`实现硬件页面`、`添加输入验证`。
+- Semantic heading levels (`Level1`, `Level2`) on every page
+- `SemanticProperties.Description`, `Hint`, and `HeadingLevel` across all interactive elements
+- `SemanticScreenReader.Announce` used for validation, save confirmations, and status changes
+- Dark/Light theme support via `AppThemeBinding`
+- Large text mode (1.22× scale) applied to labels, buttons, entries, editors, pickers, and search bars
+- High-contrast colour palette and consistent layout
 
-## 运行方式
+## Mobile Hardware Used
 
-使用安装了 .NET MAUI 工作负载的 Visual Studio 2022 打开 `FoodDrinkApp.csproj` 或 `FoodDrinkApp.sln`。
+| Feature | Implementation |
+|---|---|
+| Camera | `MediaPicker.Default.CapturePhotoAsync()` with permission handling |
+| Gallery | `MediaPicker.Default.PickPhotoAsync()` |
+| Location | `Geolocation.Default.GetLocationAsync()` + `Geocoding.Default.GetPlacemarksAsync()` |
+| Text‑to‑Speech | `SpeechService.SpeakAsync()` on detail and help pages |
+| Vibration | `Vibration.Default.Vibrate()` for reminders and confirmations |
+| Haptic Feedback | `HapticFeedback.Default.Perform()` on save, capture, and test |
 
-推荐演示目标：
+## Project Structure
 
-- Android 模拟器
-- Windows Machine
-
-Windows 构建命令：
-
-```powershell
-dotnet build .\FoodDrinkApp.csproj -f net9.0-windows10.0.19041.0
+```
+FoodDrinkApp/
+├── Models/
+│   ├── FoodItem.cs          # Food/drink data model
+│   └── MenuEntry.cs         # Menu entry with quantity
+├── Services/
+│   ├── AccessibilityService.cs  # Font scaling across pages
+│   ├── FoodCatalogService.cs    # Local + mockAPI data layer
+│   ├── MenuService.cs           # Menu state management
+│   ├── MockApiConfig.cs         # API endpoint configuration
+│   └── SpeechService.cs         # Text-to-speech wrapper
+├── AppShell.xaml             # Shell tab navigation
+├── MainPage.xaml             # Food catalogue list
+├── AddItemPage.xaml          # Add record form
+├── FoodDetailPage.xaml       # Nutrition details
+├── MenuPage.xaml             # Menu builder
+├── HardwarePage.xaml         # Hardware demo
+├── SettingsPage.xaml         # Theme & accessibility
+├── HelpPage.xaml             # Help & about
+└── Platforms/                # Platform-specific configs
 ```
 
-Android 构建命令：
+## Running the App
+
+### Prerequisites
+
+- .NET 9 SDK with MAUI workload
+- Visual Studio 2022 (recommended)
+
+### Commands
 
 ```powershell
-dotnet build .\FoodDrinkApp.csproj -f net9.0-android
+# Windows
+dotnet build -f net9.0-windows10.0.19041.0
+
+# Android
+dotnet build -f net9.0-android
 ```
 
-本项目通过 `Directory.Build.props` 将构建输出放到 `C:\MauiBuild\NutriTrack\`，用于规避 Android 打包工具在中文路径下的 `assets` 路径问题。
+Open `FoodDrinkApp.csproj` in Visual Studio and deploy to an Android emulator, Android device, or Windows Machine target.
 
-## 录屏演示清单
+## Development Plan
 
-- 说明“食品与饮品”主题和“食光营养助手”的应用概念。
-- 展示搜索、详情页和添加新记录。
-- 演示不填必填项、输入非法数字时的验证提示。
-- 演示相机、定位、文字转语音、震动和触觉反馈。
-- 展示深色模式和大字体模式。
-- 展示关键代码文件：模型、服务、页面和 Android 权限配置。
-- 展示 Android 和 Windows 部署效果。
-- 展示 GitHub 提交历史和 README。
+1. Initial project setup with Shell navigation and data models
+2. MainPage with CollectionView, search, and tap-to-detail
+3. AddItemPage with form validation and save flow
+4. FoodDetailPage with nutrition display and speech
+5. MenuPage with search, add/remove, and total counter
+6. HardwarePage with camera, location, speech, and haptic feedback
+7. SettingsPage with theme picker and large text toggle
+8. HelpPage with feature guide and accessibility documentation
+9. Accessibility pass (semantic properties, WCAG compliance)
+10. README, deployment testing, and screencast preparation
+
+## Module
+
+- **Module:** 6G6Z0014 – Mobile Computing
+- **Institution:** Manchester Metropolitan University
+- **Assessment:** 1CWK100

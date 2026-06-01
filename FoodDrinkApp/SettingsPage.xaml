@@ -115,6 +115,36 @@
                 </VerticalStackLayout>
             </Border>
 
+            <Border StrokeThickness="1.2"
+                    Stroke="{AppThemeBinding Light=#BFDBFE, Dark=#1E3A5F}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14" VerticalOptions="Center">
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Help &amp; About"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}" />
+                        <Label Text="App guide, accessibility info, and hardware demo notes."
+                               FontSize="12.5"
+                               TextColor="{AppThemeBinding Light=#64748B, Dark=#94A3B8}" />
+                    </VerticalStackLayout>
+                    <Button Grid.Column="1"
+                            Text="Open"
+                            Padding="16,0"
+                            BackgroundColor="#2563EB"
+                            TextColor="#FFFFFF"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            CornerRadius="12"
+                            Clicked="OnHelpClicked"
+                            SemanticProperties.Hint="Open help and about page" />
+                </Grid>
+            </Border>
+
             <Border StrokeThickness="0"
                     BackgroundColor="{AppThemeBinding Light=#EFF6FF, Dark=#1E3A5F}"
                     Padding="16,13">

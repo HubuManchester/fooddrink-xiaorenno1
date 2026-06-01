@@ -55,7 +55,7 @@ public static class FoodCatalogService
             Fat = 6,
             AllergyNote = "Contains dairy unless plant-based milk is selected.",
             Tags = "drink caffeine matcha latte",
-            ImageUrl = "Resources/Images/iced_matcha_latte.jpg"
+            ImageUrl = "Resources/Images/iced_matcha_latte.png"
         },
         new()
         {

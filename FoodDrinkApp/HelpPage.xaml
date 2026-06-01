@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkApp.HelpPage"
+             Title="Help &amp; About">
+    <ScrollView>
+        <ScrollView.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="{AppThemeBinding Light=#EFF6FF, Dark=#0F172A}" Offset="0.0" />
+                <GradientStop Color="{AppThemeBinding Light=#F8FAFC, Dark=#0A0F1A}" Offset="1.0" />
+            </LinearGradientBrush>
+        </ScrollView.Background>
+
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Border StrokeThickness="0" Padding="20,18" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#18000000" Offset="0,6" Radius="14" Opacity="0.3" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="NutriBite"
+                           FontSize="27"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#1E293B, Dark=#F1F5F9}"
+                           SemanticProperties.HeadingLevel="Level1" />
+                    <Label Text="A food &amp; drink tracker for the Mobile Computing module."
+                           FontSize="14"
+                           TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" />
+                    <Label Text="Version 1.0"
+                           FontSize="12"
+                           TextColor="{AppThemeBinding Light=#94A3B8, Dark=#64748B}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="1.2"
+                    Stroke="{AppThemeBinding Light=#BFDBFE, Dark=#1E3A5F}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Getting started"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
+                    <Label FontSize="14"
+                           TextColor="{AppThemeBinding Light=#475569, Dark=#CBD5E1}"
+                           LineBreakMode="WordWrap">
+                        <Label.Text>1. Browse the Foods tab to explore the catalogue.&#x0a;2. Use the search bar to filter by name or category.&#x0a;3. Tap "View Full Details" for nutrition info.&#x0a;4. The + Add button opens the record form.&#x0a;5. In the Menu tab, search dishes and build your meal.&#x0a;6. The Hardware tab demonstrates camera, location, and speech.&#x0a;7. Settings lets you switch theme and toggle large text.</Label.Text>
+                    </Label>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="1.2"
+                    Stroke="{AppThemeBinding Light=#BFDBFE, Dark=#1E3A5F}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Accessibility"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
+                    <Label FontSize="13.5"
+                           TextColor="{AppThemeBinding Light=#475569, Dark=#CBD5E1}"
+                           LineBreakMode="WordWrap">
+                        <Label.Text>This app follows the Web Content Accessibility Guidelines (WCAG) 2.1 principles:&#x0a;&#x2022; Perceivable: semantic heading levels, label descriptions, high-contrast colour schemes.&#x0a;&#x2022; Operable: logical tab order, screen-reader-friendly navigation.&#x0a;&#x2022; Understandable: consistent layout, clear validation messages, dark mode support.&#x0a;&#x2022; Robust: SemanticProperties for headings, hints, and descriptions across all pages.&#x0a;&#x0a;Features: dark/light theme, resizable text (Settings), screen-reader announcements, vibration feedback for confirmations.</Label.Text>
+                    </Label>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="1.2"
+                    Stroke="{AppThemeBinding Light=#BFDBFE, Dark=#1E3A5F}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Hardware features"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" />
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="10">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="Camera" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="1" FontSize="13" TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" VerticalTextAlignment="Center">Capture food photos or pick from gallery.</Label>
+                        </Grid>
+                        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="Location" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="1" FontSize="13" TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" VerticalTextAlignment="Center">Get coordinates, country, and city.</Label>
+                        </Grid>
+                        <Grid Grid.Row="2" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="Speech" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="1" FontSize="13" TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" VerticalTextAlignment="Center">Text-to-speech reads nutrition and help aloud.</Label>
+                        </Grid>
+                        <Grid Grid.Row="3" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="Vibration" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="1" FontSize="13" TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" VerticalTextAlignment="Center">Vibrates as a meal reminder or confirmation.</Label>
+                        </Grid>
+                        <Grid Grid.Row="4" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="Haptic" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="1" FontSize="13" TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" VerticalTextAlignment="Center">Haptic feedback on save, capture, and test.</Label>
+                        </Grid>
+                        <Grid Grid.Row="5" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Label Text="Gallery" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="1" FontSize="13" TextColor="{AppThemeBinding Light=#64748B, Dark=#CBD5E1}" VerticalTextAlignment="Center">Pick existing photos as an alternative to the camera.</Label>
+                        </Grid>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Text="Read Page"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        CornerRadius="14"
+                        HeightRequest="48"
+                        BackgroundColor="#2563EB"
+                        TextColor="#FFFFFF"
+                        Clicked="OnReadPageClicked"
+                        SemanticProperties.Hint="Read this help page content aloud" />
+                <Button Grid.Column="1"
+                        Text="Stop"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        CornerRadius="14"
+                        HeightRequest="48"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E293B}"
+                        BorderColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}"
+                        BorderWidth="1.2"
+                        TextColor="{AppThemeBinding Light=#2563EB, Dark=#60A5FA}"
+                        Clicked="OnStopSpeechClicked"
+                        SemanticProperties.Hint="Stop reading aloud" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

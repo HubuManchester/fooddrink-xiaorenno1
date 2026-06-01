@@ -72,6 +72,11 @@ public partial class AddItemPage : ContentPage
             return "Please enter a food or drink name.";
         }
 
+        if (NameEntry.Text!.Trim().Length > 100)
+        {
+            return "Food name is too long (maximum 100 characters).";
+        }
+
         if (CategoryPicker.SelectedIndex < 0)
         {
             return "Please choose a category.";
@@ -82,20 +87,56 @@ public partial class AddItemPage : ContentPage
             return "Please add a short description.";
         }
 
-        return TryReadNumber(CaloriesEntry.Text, "calories", out calories)
-            ?? TryReadNumber(ProteinEntry.Text, "protein", out protein)
-            ?? TryReadNumber(CarbsEntry.Text, "carbs", out carbs)
-            ?? TryReadNumber(FatEntry.Text, "fat", out fat);
+        if (DescriptionEditor.Text!.Trim().Length > 500)
+        {
+            return "Description is too long (maximum 500 characters).";
+        }
+
+        var imageUrl = ImageUrlEntry.Text?.Trim();
+        if (!string.IsNullOrWhiteSpace(imageUrl) &&
+            !imageUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+            !imageUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase) &&
+            !imageUrl.StartsWith("Resources/", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Image URL must start with http://, https://, or Resources/.";
+        }
+
+        if (imageUrl?.Length > 500)
+        {
+            return "Image URL is too long (maximum 500 characters).";
+        }
+
+        return TryReadNumber(CaloriesEntry.Text, "calories", out calories, 5000)
+            ?? TryReadNumber(ProteinEntry.Text, "protein", out protein, 999)
+            ?? TryReadNumber(CarbsEntry.Text, "carbs", out carbs, 999)
+            ?? TryReadNumber(FatEntry.Text, "fat", out fat, 999);
     }
 
-    private static string? TryReadNumber(string? value, string fieldName, out int number)
+    private static string? TryReadNumber(string? value, string fieldName, out int number, int max = int.MaxValue)
     {
-        if (int.TryParse(value, out number) && number >= 0)
+        if (string.IsNullOrWhiteSpace(value))
         {
+            number = 0;
             return null;
         }
 
-        return $"Please enter a valid non-negative number for {fieldName}.";
+        if (!int.TryParse(value, out number))
+        {
+            number = 0;
+            return $"Please enter a valid whole number for {fieldName}.";
+        }
+
+        if (number < 0)
+        {
+            return $"{fieldName} cannot be negative.";
+        }
+
+        if (number > max)
+        {
+            return $"{fieldName} seems too high (maximum {max}).";
+        }
+
+        return null;
     }
 
     private void ShowValidation(string message)
