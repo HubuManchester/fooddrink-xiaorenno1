@@ -50,7 +50,7 @@ public partial class FoodDetailPage : ContentPage
         CategoryLabel.Text = currentItem.Category;
         CaloriesLabel.Text = currentItem.CaloriesLabel;
         DescriptionLabel.Text = currentItem.Description;
-        AllergyLabel.Text = currentItem.AllergyNote;
+        AllergyLabel.Text = $"! {currentItem.AllergyNote}";
 
         SemanticProperties.SetDescription(NameLabel, currentItem.AccessibleSummary);
     }
