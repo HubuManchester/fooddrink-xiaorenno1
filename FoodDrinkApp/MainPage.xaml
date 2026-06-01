@@ -74,11 +74,12 @@
             </Border>
         </Grid>
 
-        <RefreshView Grid.Row="1" x:Name="FoodRefreshView" Refreshing="OnRefreshing">
+        <RefreshView Grid.Row="1" x:Name="FoodRefreshView" Refreshing="OnRefreshing"
+                     SizeChanged="OnFoodAreaSizeChanged">
             <CollectionView x:Name="FoodCollection"
                             SelectionMode="None"
                             EmptyView="No matching food or drink records found."
-                            Margin="18,0,18,20">
+                            Margin="0,0,0,20">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:FoodItem">
                         <Border StrokeThickness="1.2"

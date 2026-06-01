@@ -60,4 +60,12 @@ public partial class MainPage : ContentPage
         var source = FoodCatalogService.LastLoadUsedMockApi ? "mockapi.io" : "local fallback data";
         SemanticScreenReader.Announce($"Food and drink list refreshed. Current source: {source}.");
     }
+
+    private void OnFoodAreaSizeChanged(object? sender, EventArgs e)
+    {
+        var width = FoodRefreshView.Width;
+        if (width <= 0) return;
+        var margin = width * 0.085;
+        FoodCollection.Margin = new Thickness(margin, 0, margin, 20);
+    }
 }
