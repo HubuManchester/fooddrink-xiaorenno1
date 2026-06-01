@@ -14,19 +14,26 @@ public partial class MainPage : ContentPage
         base.OnAppearing();
         AccessibilityService.ApplyFontScale(this);
         await LoadFoodItemsAsync(SearchFoodBar.Text);
+        ApplyCardMargins();
     }
 
     protected override void OnSizeAllocated(double width, double height)
     {
         base.OnSizeAllocated(width, height);
-        UpdateCardMargins(width);
+        ApplyCardMargins(width);
     }
 
-    private void UpdateCardMargins(double pageWidth)
+    private void ApplyCardMargins(double? pageWidth = null)
     {
-        if (pageWidth <= 0) return;
-        var margin = pageWidth * 0.085;
-        FoodCollection.Margin = new Thickness(margin, 0, margin, 20);
+        var w = pageWidth;
+        if (w == null || w <= 0)
+        {
+            try { w = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density; }
+            catch { return; }
+        }
+        var targetWidth = w.Value * 0.83;
+        FoodRefreshView.HorizontalOptions = LayoutOptions.Center;
+        FoodRefreshView.WidthRequest = targetWidth;
     }
 
     private async Task LoadFoodItemsAsync(string? query = null)
