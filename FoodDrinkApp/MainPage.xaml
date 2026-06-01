@@ -92,7 +92,7 @@
                             <Border.Shadow>
                                 <Shadow Brush="#1A000000" Offset="0,6" Radius="16" Opacity="0.3" />
                             </Border.Shadow>
-                            <Grid RowDefinitions="160,*">
+                            <Grid RowDefinitions="200,*">
                                 <Grid IsClippedToBounds="True" BackgroundColor="{AppThemeBinding Light=#F1F5F9, Dark=#0F172A}">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnImageTapped"

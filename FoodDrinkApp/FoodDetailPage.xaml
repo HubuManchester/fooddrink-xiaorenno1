@@ -11,17 +11,19 @@
             </LinearGradientBrush>
         </ScrollView.Background>
 
-        <Grid RowDefinitions="260,*">
+        <Grid RowDefinitions="320,*">
             <Border StrokeThickness="0" Grid.Row="0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="0,0,28,28" />
                 </Border.StrokeShape>
-                <Grid IsClippedToBounds="True">
+                <Grid BackgroundColor="{AppThemeBinding Light=#EFF6FF, Dark=#0F172A}"
+                      IsClippedToBounds="True">
                     <Image Source="{Binding ImageUrl}"
                            Aspect="AspectFill"
                            SemanticProperties.Description="Large food photo"
                            HorizontalOptions="Fill"
-                           VerticalOptions="Fill" />
+                           VerticalOptions="Fill"
+                           HeightRequest="320" />
                     <Border StrokeThickness="0" HeightRequest="160" HorizontalOptions="Fill" VerticalOptions="End">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
