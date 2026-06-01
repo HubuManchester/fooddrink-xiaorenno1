@@ -18,18 +18,22 @@
     <TabBar>
         <ShellContent
             Title="Foods"
+            Icon="tab_foods.png"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
         <ShellContent
             Title="Menu"
+            Icon="tab_menu.png"
             ContentTemplate="{DataTemplate local:MenuPage}"
             Route="MenuPage" />
         <ShellContent
             Title="Hardware"
+            Icon="tab_hardware.png"
             ContentTemplate="{DataTemplate local:HardwarePage}"
             Route="HardwarePage" />
         <ShellContent
             Title="Settings"
+            Icon="tab_settings.png"
             ContentTemplate="{DataTemplate local:SettingsPage}"
             Route="SettingsPage" />
     </TabBar>
