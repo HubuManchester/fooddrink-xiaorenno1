@@ -13,10 +13,10 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Grid Padding="20,20,20,16">
-            <Border StrokeThickness="0" Padding="24,28">
+        <Grid Padding="20,16,20,12">
+            <Border StrokeThickness="0" Padding="20,16">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="24" />
+                    <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1.2">
@@ -28,43 +28,20 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <Border.Shadow>
-                    <Shadow Brush="#44000000" Offset="0,12" Radius="28" Opacity="0.45" />
+                    <Shadow Brush="#44000000" Offset="0,10" Radius="20" Opacity="0.4" />
                 </Border.Shadow>
-                <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="8">
+                <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="6">
                     <Label Text="NutriBite"
-                           FontSize="32"
+                           FontSize="26"
                            FontAttributes="Bold"
                            TextColor="#FFFFFF"
                            CharacterSpacing="2"
                            SemanticProperties.HeadingLevel="Level1" />
                     <Label Grid.Row="1"
                            Text="Track nutrition, capture photos, and explore flavours."
-                           FontSize="13.5"
+                           FontSize="12.5"
                            TextColor="#BFDBFE" />
-                    <Grid Grid.Row="2" ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,8,0,0">
-                        <Border BackgroundColor="#1AFFFFFF" Stroke="#40FFFFFF" StrokeThickness="0.8" Padding="10,8">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
-                            </Border.StrokeShape>
-                            <Label Text="☰  Nutrition" TextColor="#FFFFFF" FontSize="11.5" FontAttributes="Bold"
-                                   HorizontalTextAlignment="Center" />
-                        </Border>
-                        <Border Grid.Column="1" BackgroundColor="#1AFFFFFF" Stroke="#40FFFFFF" StrokeThickness="0.8" Padding="10,8">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
-                            </Border.StrokeShape>
-                            <Label Text="◉  Camera" TextColor="#FFFFFF" FontSize="11.5" FontAttributes="Bold"
-                                   HorizontalTextAlignment="Center" />
-                        </Border>
-                        <Border Grid.Column="2" BackgroundColor="#1AFFFFFF" Stroke="#40FFFFFF" StrokeThickness="0.8" Padding="10,8">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
-                            </Border.StrokeShape>
-                            <Label Text="♪  Voice" TextColor="#FFFFFF" FontSize="11.5" FontAttributes="Bold"
-                                   HorizontalTextAlignment="Center" />
-                        </Border>
-                    </Grid>
-                    <Grid Grid.Row="3" ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,4,0,0">
+                    <Grid Grid.Row="2" ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,6,0,0">
                         <Border StrokeThickness="1.5"
                                 Stroke="#60A5FA"
                                 BackgroundColor="#FFFFFF"
