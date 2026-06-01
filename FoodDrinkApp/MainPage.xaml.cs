@@ -16,6 +16,19 @@ public partial class MainPage : ContentPage
         await LoadFoodItemsAsync(SearchFoodBar.Text);
     }
 
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        base.OnSizeAllocated(width, height);
+        UpdateCardMargins(width);
+    }
+
+    private void UpdateCardMargins(double pageWidth)
+    {
+        if (pageWidth <= 0) return;
+        var margin = pageWidth * 0.085;
+        FoodCollection.Margin = new Thickness(margin, 0, margin, 20);
+    }
+
     private async Task LoadFoodItemsAsync(string? query = null)
     {
         FoodCollection.ItemsSource = await FoodCatalogService.SearchAsync(query);
@@ -59,13 +72,5 @@ public partial class MainPage : ContentPage
         FoodRefreshView.IsRefreshing = false;
         var source = FoodCatalogService.LastLoadUsedMockApi ? "mockapi.io" : "local fallback data";
         SemanticScreenReader.Announce($"Food and drink list refreshed. Current source: {source}.");
-    }
-
-    private void OnFoodAreaSizeChanged(object? sender, EventArgs e)
-    {
-        var width = FoodRefreshView.Width;
-        if (width <= 0) return;
-        var margin = width * 0.085;
-        FoodCollection.Margin = new Thickness(margin, 0, margin, 20);
     }
 }
