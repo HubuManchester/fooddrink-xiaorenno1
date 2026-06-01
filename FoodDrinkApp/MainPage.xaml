@@ -92,8 +92,9 @@
                             <Border.Shadow>
                                 <Shadow Brush="#1A000000" Offset="0,6" Radius="16" Opacity="0.3" />
                             </Border.Shadow>
-                            <Grid RowDefinitions="200,*">
-                                <Grid IsClippedToBounds="True" BackgroundColor="{AppThemeBinding Light=#F1F5F9, Dark=#0F172A}">
+                            <Grid RowDefinitions="Auto,*">
+                                <Grid IsClippedToBounds="True" BackgroundColor="{AppThemeBinding Light=#EFF6FF, Dark=#0F172A}"
+                                      HeightRequest="240">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnImageTapped"
                                                                 CommandParameter="{Binding Id}" />
