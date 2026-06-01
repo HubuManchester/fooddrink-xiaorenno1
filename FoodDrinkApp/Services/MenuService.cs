@@ -3,6 +3,8 @@ using FoodDrinkApp.Models;
 
 namespace FoodDrinkApp.Services;
 
+// Singleton that holds the user's current menu selection across pages.
+// Raises PropertyChanged so MenuPage can react to quantity changes without manual refresh.
 public sealed class MenuService : INotifyPropertyChanged
 {
     private static readonly Lazy<MenuService> _instance = new(() => new MenuService());
@@ -22,6 +24,7 @@ public sealed class MenuService : INotifyPropertyChanged
 
     private MenuService() { }
 
+    // Adds a dish or increments its quantity if it already exists in the menu.
     public void AddItem(FoodItem item, int quantity = 1)
     {
         var existing = _entries.FirstOrDefault(e => e.Item.Id == item.Id);
@@ -37,12 +40,14 @@ public sealed class MenuService : INotifyPropertyChanged
         NotifyChanged();
     }
 
+    // Removes every occurrence of a dish regardless of quantity.
     public void RemoveItem(FoodItem item)
     {
         _entries.RemoveAll(e => e.Item.Id == item.Id);
         NotifyChanged();
     }
 
+    // Resets the entire menu back to empty.
     public void Clear()
     {
         _entries.Clear();
@@ -59,6 +64,7 @@ public sealed class MenuService : INotifyPropertyChanged
         }
     }
 
+    // Lowers the count by one and removes the entry entirely if it would reach zero.
     public void DecrementQuantity(FoodItem item)
     {
         var entry = _entries.FirstOrDefault(e => e.Item.Id == item.Id);

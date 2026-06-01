@@ -1,5 +1,8 @@
 namespace FoodDrinkApp.Services;
 
+// Thin wrapper around MAUI's TextToSpeech API that keeps a cancellation token
+// so the user can stop playback at any time. The food detail page and the help
+// page both use this for reading content aloud.
 public static class SpeechService
 {
     private static CancellationTokenSource? currentSpeech;
@@ -27,6 +30,7 @@ public static class SpeechService
 
     public static Task SpeakChineseAsync(string text) => SpeakAsync(text);
 
+    // Cancels any active speech so a new one can start cleanly.
     public static void Stop()
     {
         if (currentSpeech is null)
@@ -39,6 +43,7 @@ public static class SpeechService
         currentSpeech = null;
     }
 
+    // Picks the first available English voice so pronunciation is consistent.
     private static async Task<Locale?> FindEnglishLocaleAsync()
     {
         var locales = await TextToSpeech.Default.GetLocalesAsync();

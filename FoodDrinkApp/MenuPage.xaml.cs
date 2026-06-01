@@ -3,6 +3,9 @@ using FoodDrinkApp.Services;
 
 namespace FoodDrinkApp;
 
+// Menu builder page. Users search for dishes from the catalogue and add them
+// to a running list with adjustable quantities and a running calorie total.
+// All menu state lives in the singleton MenuService so it persists across tabs.
 public partial class MenuPage : ContentPage
 {
     private List<FoodItem>? _allItems;
@@ -11,6 +14,7 @@ public partial class MenuPage : ContentPage
     public MenuPage()
     {
         InitializeComponent();
+        // React to external changes (e.g. if the menu is modified from another page).
         _menu.PropertyChanged += OnMenuChanged;
     }
 
@@ -21,6 +25,7 @@ public partial class MenuPage : ContentPage
         RefreshMenuView();
     }
 
+    // MenuService raises PropertyChanged when items are added, removed, or quantities change.
     private void OnMenuChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         MainThread.BeginInvokeOnMainThread(RefreshMenuView);
@@ -36,6 +41,8 @@ public partial class MenuPage : ContentPage
         await SearchAsync(SearchBar.Text);
     }
 
+    // Filters the full data catalogue by name, category, description, or tags
+    // and shows matching results above the current menu list.
     private async Task SearchAsync(string? query)
     {
         try
@@ -82,6 +89,7 @@ public partial class MenuPage : ContentPage
         }
     }
 
+    // Looks up the tapped item by id and adds it to the menu service.
     private async void OnAddToMenuClicked(object? sender, EventArgs e)
     {
         if (sender is Button button && button.CommandParameter is string id)
@@ -103,6 +111,7 @@ public partial class MenuPage : ContentPage
         }
     }
 
+    // Decrement removes the entry entirely when quantity would drop below one.
     private void OnDecrementClicked(object? sender, EventArgs e)
     {
         if (sender is Button button && button.CommandParameter is FoodItem item)
@@ -111,6 +120,7 @@ public partial class MenuPage : ContentPage
         }
     }
 
+    // Prompts for confirmation before clearing the whole menu.
     private async void OnClearMenuClicked(object? sender, EventArgs e)
     {
         if (!_menu.HasItems) return;
@@ -124,6 +134,7 @@ public partial class MenuPage : ContentPage
         }
     }
 
+    // Toggles between the empty banner and the full menu list depending on state.
     private void RefreshMenuView()
     {
         var hasItems = _menu.HasItems;

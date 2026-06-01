@@ -3,6 +3,9 @@ using FoodDrinkApp.Services;
 
 namespace FoodDrinkApp;
 
+// Form page that lets the user add a new food or drink record.
+// Runs through several validation checks before saving, and shows
+// a clear error panel when something is wrong.
 public partial class AddItemPage : ContentPage
 {
     public AddItemPage()
@@ -16,6 +19,8 @@ public partial class AddItemPage : ContentPage
         AccessibilityService.ApplyFontScale(this);
     }
 
+    // Validates the form, constructs a FoodItem, and hands it off to the
+    // data service. A short vibration tells the user the save went through.
     private async void OnSaveClicked(object? sender, EventArgs e)
     {
         try
@@ -63,6 +68,9 @@ public partial class AddItemPage : ContentPage
         }
     }
 
+    // Goes through each field in order and returns the first error message,
+    // or null if everything looks fine. Optional fields (protein, carbs, fat)
+    // are set to zero when left blank.
     private string? ValidateForm(out int calories, out int protein, out int carbs, out int fat)
     {
         calories = protein = carbs = fat = 0;
@@ -112,6 +120,9 @@ public partial class AddItemPage : ContentPage
             ?? TryReadNumber(FatEntry.Text, "fat", out fat, 999);
     }
 
+    // Parses an optional numeric field. Empty strings are accepted (default to zero).
+    // Returns a human-readable error when the value is not a valid number, negative,
+    // or exceeds the sensible maximum for the field.
     private static string? TryReadNumber(string? value, string fieldName, out int number, int max = int.MaxValue)
     {
         if (string.IsNullOrWhiteSpace(value))
@@ -139,6 +150,7 @@ public partial class AddItemPage : ContentPage
         return null;
     }
 
+    // Shows the yellow warning banner and makes sure screen readers pick up the message.
     private void ShowValidation(string message)
     {
         ValidationLabel.Text = message;

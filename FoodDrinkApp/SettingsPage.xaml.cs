@@ -2,6 +2,9 @@ using FoodDrinkApp.Services;
 
 namespace FoodDrinkApp;
 
+// Settings page for theme selection and accessibility options.
+// Changes to large text mode are applied immediately through AccessibilityService
+// and persist for the current session across all pages.
 public partial class SettingsPage : ContentPage
 {
     public SettingsPage()
@@ -18,6 +21,8 @@ public partial class SettingsPage : ContentPage
         ApplyLargeTextState();
     }
 
+    // Maps the picker index to the MAUI AppTheme enum.
+    // "System" (index 0) follows the device setting; Light and Dark override it.
     private void OnThemeChanged(object? sender, EventArgs e)
     {
         Application.Current!.UserAppTheme = ThemePicker.SelectedIndex switch
@@ -30,6 +35,7 @@ public partial class SettingsPage : ContentPage
         Announce("Theme preference updated.");
     }
 
+    // Toggles the global large-text flag and rescales the current page immediately.
     private void OnLargeTextToggled(object? sender, ToggledEventArgs e)
     {
         AccessibilityService.LargeTextEnabled = e.Value;
@@ -39,6 +45,8 @@ public partial class SettingsPage : ContentPage
             : "Large text mode is off. Page text has returned to normal.");
     }
 
+    // Refreshes the preview labels and re-applies the font scale so the user sees
+    // the effect right away on the same page.
     private void ApplyLargeTextState()
     {
         AccessibilityService.ApplyFontScale(this);
@@ -56,6 +64,7 @@ public partial class SettingsPage : ContentPage
         await Shell.Current.GoToAsync(nameof(HelpPage));
     }
 
+    // Updates the status bar message and pushes it to screen readers.
     private void Announce(string message)
     {
         SettingsStatusLabel.Text = message;

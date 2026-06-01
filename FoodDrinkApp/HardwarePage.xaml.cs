@@ -2,6 +2,9 @@ using FoodDrinkApp.Services;
 
 namespace FoodDrinkApp;
 
+// Demonstrates every onboard hardware feature the app uses: camera capture,
+// gallery pick, geolocation, text-to-speech, vibration, and haptic feedback.
+// Each method handles its own permission and availability errors separately.
 public partial class HardwarePage : ContentPage
 {
     private int feedbackTestCount;
@@ -23,6 +26,8 @@ public partial class HardwarePage : ContentPage
         base.OnDisappearing();
     }
 
+    // Opens the device camera and loads the resulting photo into the preview area.
+    // Falls back to a user-friendly message when the camera is unavailable.
     private async void OnTakePhotoClicked(object? sender, EventArgs e)
     {
         try
@@ -69,6 +74,8 @@ public partial class HardwarePage : ContentPage
         }
     }
 
+    // Lets the user pick an existing image from the device gallery as an
+    // alternative to taking a new photo with the camera.
     private async void OnPickPhotoClicked(object? sender, EventArgs e)
     {
         try
@@ -105,6 +112,7 @@ public partial class HardwarePage : ContentPage
         }
     }
 
+    // Reads the selected photo into a byte array and sets the preview image source.
     private async Task LoadPhotoAsync(FileResult photo)
     {
         await using var stream = await photo.OpenReadAsync();
@@ -114,6 +122,8 @@ public partial class HardwarePage : ContentPage
         FoodPhoto.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
     }
 
+    // Fetches the device location with medium accuracy and resolves the
+    // coordinates into a country / city / region string via reverse geocoding.
     private async void OnGetLocationClicked(object? sender, EventArgs e)
     {
         try
@@ -142,6 +152,8 @@ public partial class HardwarePage : ContentPage
         }
     }
 
+    // Tries real geocoding first; if that fails, falls back to a best-guess
+    // description based on the coordinate ranges common in emulator scenarios.
     private static async Task<string> BuildAddressTextAsync(Location location)
     {
         try
@@ -162,6 +174,7 @@ public partial class HardwarePage : ContentPage
         return BuildFallbackAddress(location);
     }
 
+    // Joins the available placemark fields into a readable location string.
     private static string FormatPlacemark(Placemark? placemark)
     {
         if (placemark is null)
@@ -184,6 +197,8 @@ public partial class HardwarePage : ContentPage
         return parts.Length == 0 ? string.Empty : string.Join(" / ", parts);
     }
 
+    // Returns a human-readable fallback address for known emulator coordinate
+    // ranges. This avoids showing a bare "Country and city unavailable" message.
     private static string BuildFallbackAddress(Location location)
     {
         if (IsNear(location, 37.422, -122.084, 0.08))
@@ -210,6 +225,7 @@ public partial class HardwarePage : ContentPage
                Math.Abs(location.Longitude - longitude) <= tolerance;
     }
 
+    // Reads a short app description aloud to demonstrate text-to-speech.
     private async void OnReadHelpClicked(object? sender, EventArgs e)
     {
         try
@@ -230,6 +246,8 @@ public partial class HardwarePage : ContentPage
         SetStatus("Reading stopped.");
     }
 
+    // Triggers both vibration and haptic feedback, incrementing a counter each time
+    // so the effect can be verified visually in a screen recording.
     private void OnFeedbackClicked(object? sender, EventArgs e)
     {
         try
@@ -246,6 +264,7 @@ public partial class HardwarePage : ContentPage
         }
     }
 
+    // Updates the status label and announces the change for screen readers.
     private void SetStatus(string message)
     {
         HardwareStatusLabel.Text = message;

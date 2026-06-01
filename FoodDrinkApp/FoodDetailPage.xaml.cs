@@ -3,6 +3,9 @@ using FoodDrinkApp.Services;
 
 namespace FoodDrinkApp;
 
+// Full nutrition breakdown for a single food or drink item.
+// Receives the item id through Shell query parameters and loads
+// the matching record on arrival.
 [QueryProperty(nameof(ItemId), "id")]
 public partial class FoodDetailPage : ContentPage
 {
@@ -19,12 +22,14 @@ public partial class FoodDetailPage : ContentPage
         AccessibilityService.ApplyFontScale(this);
     }
 
+    // Make sure speech stops when the user navigates away.
     protected override void OnDisappearing()
     {
         SpeechService.Stop();
         base.OnDisappearing();
     }
 
+    // Called automatically by Shell when navigating with a query parameter.
     public string ItemId
     {
         set => _ = LoadItemAsync(value);
@@ -37,6 +42,8 @@ public partial class FoodDetailPage : ContentPage
         RenderItem();
     }
 
+    // Writes the item data directly to named label controls.
+    // The image and macro values are handled through XAML bindings instead.
     private void RenderItem()
     {
         if (currentItem is null)
@@ -52,9 +59,12 @@ public partial class FoodDetailPage : ContentPage
         DescriptionLabel.Text = currentItem.Description;
         AllergyLabel.Text = $"! {currentItem.AllergyNote}";
 
+        // Override the default semantic description so screen readers
+        // announce the full accessible summary instead of just the name.
         SemanticProperties.SetDescription(NameLabel, currentItem.AccessibleSummary);
     }
 
+    // Uses the speech service to read the item summary aloud.
     private async void OnSpeakClicked(object? sender, EventArgs e)
     {
         if (currentItem is null)
@@ -79,6 +89,7 @@ public partial class FoodDetailPage : ContentPage
         SemanticScreenReader.Announce("Reading stopped.");
     }
 
+    // Demonstrates both Vibration and HapticFeedback as a meal reminder.
     private async void OnVibrateClicked(object? sender, EventArgs e)
     {
         try

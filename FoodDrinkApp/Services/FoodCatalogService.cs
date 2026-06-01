@@ -4,6 +4,10 @@ using FoodDrinkApp.Models;
 
 namespace FoodDrinkApp.Services;
 
+// Data access layer that serves food and drink records from one of two sources:
+//   1. mockapi.io REST endpoint (when configured)
+//   2. A local in-memory list that acts as a fallback during demos or offline runs.
+// All methods are static so pages can call them directly without injection setup.
 public static class FoodCatalogService
 {
     private static readonly HttpClient HttpClient = new()
@@ -16,6 +20,7 @@ public static class FoodCatalogService
         PropertyNameCaseInsensitive = true
     };
 
+    // Seed data so the app shows meaningful content even without an API key.
     private static readonly List<FoodItem> LocalFallbackItems =
     [
         new()
@@ -55,7 +60,7 @@ public static class FoodCatalogService
             Fat = 6,
             AllergyNote = "Contains dairy unless plant-based milk is selected.",
             Tags = "drink caffeine matcha latte",
-            ImageUrl = "Resources/Images/iced_matcha_latte.png"
+            ImageUrl = "Resources/Images/iced_matcha_latte.jpg"
         },
         new()
         {
@@ -124,10 +129,14 @@ public static class FoodCatalogService
         }
     ];
 
+    // Items loaded from either the API or local seed; used by SearchAsync and GetByIdAsync.
     private static List<FoodItem> cachedItems = new(LocalFallbackItems);
 
+    // Lets the UI display a "Loaded from mockapi.io" vs "Loaded from fallback" message.
     public static bool LastLoadUsedMockApi { get; private set; }
 
+    // Filters the full catalogue by name, category, description, or tags.
+    // Returns everything sorted alphabetically when query is empty.
     public static async Task<IReadOnlyList<FoodItem>> SearchAsync(string? query)
     {
         var items = await GetAllAsync();
@@ -148,6 +157,7 @@ public static class FoodCatalogService
             .ToList();
     }
 
+    // Tries the API first if configured; otherwise falls back to the in-memory cache.
     public static async Task<FoodItem?> GetByIdAsync(string id)
     {
         if (MockApiConfig.IsConfigured)
@@ -165,13 +175,14 @@ public static class FoodCatalogService
             }
             catch
             {
-                // Fall back to the last loaded cache below.
+                // The cache below keeps things working when the network is unreachable.
             }
         }
 
         return cachedItems.FirstOrDefault(item => item.Id == id);
     }
 
+    // Posts a new item to the API if configured and adds it to the local cache either way.
     public static async Task<FoodItem> AddAsync(FoodItem item)
     {
         if (MockApiConfig.IsConfigured)
@@ -191,6 +202,8 @@ public static class FoodCatalogService
         return item;
     }
 
+    // Internal fetch that populates the cache from the remote API on first call,
+    // then keeps returning the latest snapshot from memory.
     private static async Task<IReadOnlyList<FoodItem>> GetAllAsync()
     {
         if (!MockApiConfig.IsConfigured)
@@ -211,7 +224,8 @@ public static class FoodCatalogService
         }
         catch
         {
-            // Keep the app usable during demos even if the network is unavailable.
+            // Silently falls back so the app never crashes just because a demo machine
+            // has no network connection.
         }
 
         LastLoadUsedMockApi = false;

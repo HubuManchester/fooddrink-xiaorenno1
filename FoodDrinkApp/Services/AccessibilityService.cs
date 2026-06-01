@@ -2,13 +2,18 @@ using System.Runtime.CompilerServices;
 
 namespace FoodDrinkApp.Services;
 
+// Applies a uniform font scale across every page so users can toggle larger text
+// in Settings. The scale factor is applied on top of each control's original size,
+// which is captured once and cached to avoid drift when toggling on and off.
 public static class AccessibilityService
 {
+    // 1.22 × base size gives a noticeable but not breaking increase.
     private const double LargeTextScale = 1.22;
     private static readonly ConditionalWeakTable<BindableObject, FontSizeStore> OriginalFontSizes = new();
 
     public static bool LargeTextEnabled { get; set; }
 
+    // Walks the visual tree of the given root and rescales every text-bearing control.
     public static void ApplyFontScale(Element root)
     {
         ApplyToElement(root);
@@ -51,6 +56,8 @@ public static class AccessibilityService
         }
     }
 
+    // Stores the first seen font size per control so we always scale from the original,
+    // not from an already-scaled value.
     private static double GetOriginalFontSize(BindableObject control, double currentSize)
     {
         var store = OriginalFontSizes.GetOrCreateValue(control);
