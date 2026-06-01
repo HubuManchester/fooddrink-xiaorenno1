@@ -14,7 +14,7 @@
         </Grid.Background>
 
         <Grid Padding="20,20,20,16">
-            <Border StrokeThickness="0" Padding="24,28" HeightRequest="224">
+            <Border StrokeThickness="0" Padding="24,28">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="24" />
                 </Border.StrokeShape>
@@ -30,22 +30,17 @@
                 <Border.Shadow>
                     <Shadow Brush="#44000000" Offset="0,12" Radius="28" Opacity="0.45" />
                 </Border.Shadow>
-                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="8">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="8">
                     <Label Text="NutriBite"
                            FontSize="32"
                            FontAttributes="Bold"
                            TextColor="#FFFFFF"
                            CharacterSpacing="2"
                            SemanticProperties.HeadingLevel="Level1" />
-                    <BoxView Grid.Row="1" HeightRequest="3"
-                             Color="#60A5FA" HorizontalOptions="Start"
-                             WidthRequest="48" Margin="0,2,0,4"
-                             CornerRadius="2" />
                     <Label Grid.Row="1"
                            Text="Track nutrition, capture photos, and explore flavours."
                            FontSize="13.5"
-                           TextColor="#BFDBFE"
-                           Margin="0,14,0,0" />
+                           TextColor="#BFDBFE" />
                     <Grid Grid.Row="2" ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,8,0,0">
                         <Border BackgroundColor="#1AFFFFFF" Stroke="#40FFFFFF" StrokeThickness="0.8" Padding="10,8">
                             <Border.StrokeShape>
@@ -69,9 +64,7 @@
                                    HorizontalTextAlignment="Center" />
                         </Border>
                     </Grid>
-                    <BoxView Grid.Row="3" HeightRequest="1"
-                             Color="#40FFFFFF" Margin="0,6" />
-                    <Grid Grid.Row="4" ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,4,0,0">
+                    <Grid Grid.Row="3" ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,4,0,0">
                         <Border StrokeThickness="1.5"
                                 Stroke="#60A5FA"
                                 BackgroundColor="#FFFFFF"
