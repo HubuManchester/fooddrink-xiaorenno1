@@ -94,3 +94,4 @@ Open `FoodDrinkApp.csproj` in Visual Studio and deploy to an Android emulator, A
 - **Module:** 6G6Z0014 – Mobile Computing
 - **Institution:** Manchester Metropolitan University
 - **Assessment:** 1CWK100
+- **Name:** Baichuan Jiang
